@@ -1,0 +1,130 @@
+---
+title: "Limpieza y preparación de los datos"
+author: "Marta Martínez Guerra"
+date: "17/5/2023"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Librerías utilizadas
+```{r,eval=TRUE,echo=TRUE,warning=FALSE, message=FALSE}
+library(dplyr)
+library(stringr)
+
+```
+# Juego de datos 
+
+* Attribution 4.0 International (CC BY 4.0)
+* Author: desconocido
+* Disponible en [kaggle](https://www.kaggle.com/datasets/rkiattisak/mobile-phone-price)
+
+
+
+```{r, include= FALSE}
+datos1 <- read.csv("C:/Users/Marta Martínez/OneDrive/1Ciencia de Datos/Proyectos/Fuentes de datos/archive/Mobile phone price.csv")
+
+```
+
+## Estructura de los datos
+
+Tenemos un juego de datos con varias variables tipo carácter que pueden ser modificadas y transformadas en variables numéricas o integer, para ello, hay que realizar una limpieza en los datos, se eliminan algunos caracteres y se preparan para trabajar posteriormente con ellos.
+
+El trabajo obtenido se vuelca a un archivo CSV para cargarlo en las fases posteriores.
+```{r}
+str(datos1)
+
+```
+
+```{r, include= FALSE}
+apply(datos1, 2, unique)
+```
+# Limpieza de datos.
+
+## Variable $Storage
+```{r}
+datos1.2<- datos1
+```
+
+
+```{r}
+datos1.2$Storage <- str_remove_all(datos1.2$Storage, "GB")
+datos1.2$Storage <- str_remove_all(datos1.2$Storage, " ")
+datos1.2$Storage <- as.integer(datos1.2$Storage) 
+
+```
+```{r}
+str(datos1.2$Storage)
+```
+## Variable $RAM
+
+```{r}
+datos1.2$RAM <- str_remove_all(datos1.2$RAM, "GB")
+datos1.2$RAM <- str_remove_all(datos1.2$RAM, " ")
+datos1.2$RAM <- as.integer(datos1.2$RAM) 
+
+```
+```{r}
+str(datos1.2$RAM)
+```
+## Variable $Screen.Size..inches
+
+```{r}
+colnames(datos1.2)[5]<- "Screen.Size"
+datos1.2$Screen.Size <- str_remove_all(datos1.2$Screen.Size, "unfolded")
+datos1.2$Screen.Size <- str_remove_all(datos1.2$Screen.Size, '[(]')
+datos1.2$Screen.Size <- str_remove_all(datos1.2$Screen.Size, '[)]')
+datos1.2$Screen.Size <- str_remove_all(datos1.2$Screen.Size, " ")
+datos1.2[89,5]
+datos1.2[89,5] <- str_remove_all(datos1.2[89,5] , "3.9")
+datos1.2[89,5] <- str_remove_all(datos1.2[89,5] , "[+]")
+datos1.2$Screen.Size <- as.numeric(datos1.2$Screen.Size) 
+```
+```{r}
+str(datos1.2$Screen.Size)
+```
+## Variable Camera.
+
+```{r}
+colnames(datos1.2)[6]<- "Camera"
+datos1.2$Camera <- str_remove_all(datos1.2$Camera, " ")
+datos1.2$Camera <- str_remove_all(datos1.2$Camera, "MP")
+
+```
+
+## Variable Battery.Capacity..mAh.
+
+
+```{r}
+colnames(datos1.2)[7]<- "Battery"
+```
+
+## Variable Price..
+
+```{r}
+colnames(datos1.2)[8]<- "Price"
+datos1.2$Price <- str_remove_all(datos1.2$Price, "[$]")
+datos1.2$Price <- str_remove_all(datos1.2$Price, ",")
+datos1.2$Price <- as.integer(datos1.2$Price) 
+```
+
+## Datos obtenidos
+
+```{r}
+str(datos1.2)
+```
+## Creación del fichero limpio
+
+```{r}
+datos1.3 <- datos1.2 %>%
+  select(Brand,Model,Camera,Storage, RAM, Screen.Size, Battery, Price)
+
+  write.table(datos1.3, file = "Mobile_phone_pricev2.csv",col.names = TRUE, sep =";")
+```
+
+
+
