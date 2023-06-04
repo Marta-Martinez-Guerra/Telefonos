@@ -3,8 +3,16 @@ title: "Limpieza y preparación de los datos"
 author: "Marta Martínez Guerra"
 date: "17/5/2023"
 output:
+  html_document:
+    toc: true
+    number_sections: true
+    toc_depth: 2
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    theme: lumen
+    highlight: tango
   pdf_document: default
-  html_document: default
   word_document: default
 ---
 ```{r setup, include=FALSE}
@@ -23,22 +31,30 @@ library(stringr)
 * Author: desconocido
 * Disponible en [kaggle](https://www.kaggle.com/datasets/rkiattisak/mobile-phone-price)
 
-
+En este trabajo se carga un juego de datos desde la plataforma de kaggle y se va a adaptar, corrigiendo los errores y modificando los atributos de tipo carácter a numérico o integer para poder utilizar los datos en trabajos posteriores. 
 
 ```{r, include= FALSE}
 datos1 <- read.csv("C:/Users/Marta Martínez/OneDrive/1Ciencia de Datos/Proyectos/Fuentes de datos/archive/Mobile phone price.csv")
 
 ```
 
-## Estructura de los datos
+# Estructura de los datos
 
-Tenemos un juego de datos con varias variables tipo carácter que pueden ser modificadas y transformadas en variables numéricas o integer, para ello, hay que realizar una limpieza en los datos, se eliminan algunos caracteres y se preparan para trabajar posteriormente con ellos.
-
-El trabajo obtenido se vuelca a un archivo CSV para cargarlo en las fases posteriores.
+Tenemos un juego de datos con 407 filas y 8 columnas, 7 de ellas son de tipo carácter y 1 integer.
 ```{r}
-str(datos1)
+knitr::kable(str(datos1))
 
 ```
+
+
+# Valores nulos
+
+No tenemos valores nulos en ninguna columna
+
+```{r}
+apply(X = is.na(datos1), MARGIN = 2, FUN = sum) 
+```
+
 
 ```{r, include= FALSE}
 apply(datos1, 2, unique)
@@ -46,6 +62,10 @@ apply(datos1, 2, unique)
 # Limpieza de datos.
 
 ## Variable $Storage
+
+* Se eliminan las letras GB
+* Se elmininan los espacios
+* Se transforma la variable en integer
 ```{r}
 datos1.2<- datos1
 ```
@@ -62,6 +82,10 @@ str(datos1.2$Storage)
 ```
 ## Variable $RAM
 
+* Se eliminan las letras GB
+* Se elmininan los espacios
+* Se transforma la variable en integer
+
 ```{r}
 datos1.2$RAM <- str_remove_all(datos1.2$RAM, "GB")
 datos1.2$RAM <- str_remove_all(datos1.2$RAM, " ")
@@ -72,6 +96,12 @@ datos1.2$RAM <- as.integer(datos1.2$RAM)
 str(datos1.2$RAM)
 ```
 ## Variable $Screen.Size..inches
+
+* Se cambia el nombre a "Screen.Size"
+* Se eliminan los parentesis
+* Se elmininan los espacios
+* En la fila 89 nos quedamos con el primer valor y eliminamos el signo +
+* Se transforma la variable en numerica
 
 ```{r}
 colnames(datos1.2)[5]<- "Screen.Size"
@@ -89,6 +119,10 @@ str(datos1.2$Screen.Size)
 ```
 ## Variable Camera.
 
+* Se cambia el nombre a "Camera"
+* Se elmininan los espacios
+* Se eliminan las letras MP
+
 ```{r}
 colnames(datos1.2)[6]<- "Camera"
 datos1.2$Camera <- str_remove_all(datos1.2$Camera, " ")
@@ -98,12 +132,17 @@ datos1.2$Camera <- str_remove_all(datos1.2$Camera, "MP")
 
 ## Variable Battery.Capacity..mAh.
 
-
+* Se cambia el nombre a "Battery"
 ```{r}
 colnames(datos1.2)[7]<- "Battery"
 ```
 
 ## Variable Price..
+
+* Se elmina el signo $
+* Se eliminan las comas
+* Se transforma la variable en integer
+
 
 ```{r}
 colnames(datos1.2)[8]<- "Price"
@@ -111,19 +150,46 @@ datos1.2$Price <- str_remove_all(datos1.2$Price, "[$]")
 datos1.2$Price <- str_remove_all(datos1.2$Price, ",")
 datos1.2$Price <- as.integer(datos1.2$Price) 
 ```
-
-## Datos obtenidos
-
 ```{r}
-str(datos1.2)
+str(datos1.2$Price)
 ```
-## Creación del fichero limpio
+
+
+# Valores duplicados
+
+Se localizan 49 valores duplicados y se eliminan
 
 ```{r}
-datos1.3 <- datos1.2 %>%
+sum(duplicated(datos1.2)) 
+```
+
+```{r}
+datos1.2_dup<- datos1.2%>%
+  filter(duplicated(datos1)==TRUE)
+
+knitr::kable(datos1.2_dup)
+
+datos1.3 <- datos1.2%>%
+  filter(duplicated(datos1)==FALSE)
+
+dim(datos1.3)
+
+  
+```
+# Datos obtenidos
+
+Finamente obtenemos un juego de datos de 381 filas y 8 columnas sin valores duplicados, con 3 variables tipo caracter, 4 integer y 1 numérica.
+
+```{r}
+knitr::kable(str(datos1.3))
+```
+# Creación del fichero limpio
+
+```{r}
+datos1.4 <- datos1.3 %>%
   select(Brand,Model,Camera,Storage, RAM, Screen.Size, Battery, Price)
 
-  write.table(datos1.3, file = "Mobile_phone_pricev2.csv",col.names = TRUE, sep =";")
+  write.table(datos1.4, file = "Mobile_phone_pricev2.csv",col.names = TRUE, sep =";")
 ```
 
 
