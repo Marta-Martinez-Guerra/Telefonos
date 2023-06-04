@@ -1,5 +1,5 @@
 ---
-title: "Limpieza y preparación de los datos"
+title: "Exploración de los datos y PCA"
 author: "Marta Martínez Guerra"
 date: "17/5/2023"
 output:
