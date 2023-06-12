@@ -1363,11 +1363,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } 
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.at { color: #c4a000; } 
+code span.at { color: #204a87; } 
 code span.bn { color: #0000cf; } 
 code span.cf { color: #204a87; font-weight: bold; } 
 code span.ch { color: #4e9a06; } 
-code span.cn { color: #000000; } 
+code span.cn { color: #8f5902; } 
 code span.co { color: #8f5902; font-style: italic; } 
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
@@ -1376,14 +1376,14 @@ code span.dv { color: #0000cf; }
 code span.er { color: #a40000; font-weight: bold; } 
 code span.ex { } 
 code span.fl { color: #0000cf; } 
-code span.fu { color: #000000; } 
+code span.fu { color: #204a87; font-weight: bold; } 
 code span.im { } 
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
 code span.kw { color: #204a87; font-weight: bold; } 
 code span.op { color: #ce5c00; font-weight: bold; } 
 code span.ot { color: #8f5902; } 
 code span.pp { color: #8f5902; font-style: italic; } 
-code span.sc { color: #000000; } 
+code span.sc { color: #ce5c00; font-weight: bold; } 
 code span.ss { color: #4e9a06; } 
 code span.st { color: #4e9a06; } 
 code span.va { color: #000000; } 
@@ -1595,8 +1595,8 @@ font-size: 0.95em;
 <div id="librerías-utilizadas" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Librerías
 utilizadas</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
 </div>
 <div id="juego-de-datos" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Juego de datos</h1>
@@ -1615,7 +1615,7 @@ datos en trabajos posteriores.</p>
 datos</h1>
 <p>Tenemos un juego de datos con 407 filas y 8 columnas, 7 de ellas son
 de tipo carácter y 1 integer.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">str</span>(datos1))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">str</span>(datos1))</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    407 obs. of  8 variables:
 ##  $ Brand                 : chr  &quot;Apple&quot; &quot;Samsung&quot; &quot;OnePlus&quot; &quot;Xiaomi&quot; ...
 ##  $ Model                 : chr  &quot;iPhone 13 Pro&quot; &quot;Galaxy S21 Ultra&quot; &quot;9 Pro&quot; &quot;Redmi Note 10 Pro&quot; ...
@@ -1629,7 +1629,7 @@ de tipo carácter y 1 integer.</p>
 <div id="valores-nulos" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Valores nulos</h1>
 <p>No tenemos valores nulos en ninguna columna</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> <span class="fu">is.na</span>(datos1), <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum) </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> <span class="fu">is.na</span>(datos1), <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum) </span></code></pre></div>
 <pre><code>##                  Brand                  Model                Storage 
 ##                      0                      0                      0 
 ##                    RAM   Screen.Size..inches.            Camera..MP. 
@@ -1647,11 +1647,11 @@ $Storage</h2>
 <li>Se elmininan los espacios</li>
 <li>Se transforma la variable en integer</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="ot">&lt;-</span> datos1</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Storage <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage, <span class="st">&quot;GB&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Storage <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Storage <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage) </span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="ot">&lt;-</span> datos1</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Storage <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage, <span class="st">&quot;GB&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Storage <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Storage <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage) </span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Storage)</span></code></pre></div>
 <pre><code>##  int [1:407] 128 256 128 128 128 128 256 128 128 256 ...</code></pre>
 </div>
 <div id="variable-ram" class="section level2" number="5.2">
@@ -1661,10 +1661,10 @@ $Storage</h2>
 <li>Se elmininan los espacios</li>
 <li>Se transforma la variable en integer</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>RAM <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM, <span class="st">&quot;GB&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>RAM <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>RAM <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM) </span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>RAM <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM, <span class="st">&quot;GB&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>RAM <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>RAM <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM) </span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>RAM)</span></code></pre></div>
 <pre><code>##  int [1:407] 6 12 8 6 8 4 8 6 8 12 ...</code></pre>
 </div>
 <div id="variable-screen.size..inches" class="section level2" number="5.3">
@@ -1678,17 +1678,17 @@ $Screen.Size..inches</h2>
 +</li>
 <li>Se transforma la variable en numerica</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">5</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Screen.Size&quot;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&quot;unfolded&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&#39;[(]&#39;</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&#39;[)]&#39;</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">5</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Screen.Size&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&quot;unfolded&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&#39;[(]&#39;</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&#39;[)]&#39;</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;6.8+3.9&quot;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] , <span class="st">&quot;3.9&quot;</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] , <span class="st">&quot;[+]&quot;</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size) </span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] , <span class="st">&quot;3.9&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span>[<span class="dv">89</span>,<span class="dv">5</span>] , <span class="st">&quot;[+]&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size) </span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Screen.Size)</span></code></pre></div>
 <pre><code>##  num [1:407] 6.1 6.8 6.7 6.67 6.4 6.1 6.7 6.67 6.55 6.78 ...</code></pre>
 </div>
 <div id="variable-camera." class="section level2" number="5.4">
@@ -1698,9 +1698,9 @@ $Screen.Size..inches</h2>
 <li>Se elmininan los espacios</li>
 <li>Se eliminan las letras MP</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">6</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Camera&quot;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Camera <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Camera, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Camera <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Camera, <span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">6</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Camera&quot;</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Camera <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Camera, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Camera <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Camera, <span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
 </div>
 <div id="variable-battery.capacity..mah." class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Variable
@@ -1708,7 +1708,7 @@ Battery.Capacity..mAh.</h2>
 <ul>
 <li>Se cambia el nombre a “Battery”</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">7</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Battery&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">7</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Battery&quot;</span></span></code></pre></div>
 </div>
 <div id="variable-price.." class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Variable Price..</h2>
@@ -1717,23 +1717,23 @@ Battery.Capacity..mAh.</h2>
 <li>Se eliminan las comas</li>
 <li>Se transforma la variable en integer</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">8</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Price&quot;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price, <span class="st">&quot;[$]&quot;</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price, <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price) </span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">colnames</span>(datos1<span class="fl">.2</span>)[<span class="dv">8</span>]<span class="ot">&lt;-</span> <span class="st">&quot;Price&quot;</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price, <span class="st">&quot;[$]&quot;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price, <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>datos1<span class="fl">.2</span><span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price) </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">str</span>(datos1<span class="fl">.2</span><span class="sc">$</span>Price)</span></code></pre></div>
 <pre><code>##  int [1:407] 999 1199 899 279 799 799 999 249 699 1199 ...</code></pre>
 </div>
 </div>
 <div id="valores-duplicados" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Valores duplicados</h1>
 <p>Se localizan 49 valores duplicados y se eliminan</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(datos1<span class="fl">.2</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(datos1<span class="fl">.2</span>)) </span></code></pre></div>
 <pre><code>## [1] 49</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.2</span>_dup<span class="ot">&lt;-</span> datos1<span class="fl">.2</span><span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(datos1)<span class="sc">==</span><span class="cn">TRUE</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(datos1<span class="fl">.2</span>_dup)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>datos1<span class="fl">.2</span>_dup<span class="ot">&lt;-</span> datos1<span class="fl">.2</span><span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(datos1)<span class="sc">==</span><span class="cn">TRUE</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(datos1<span class="fl">.2</span>_dup)</span></code></pre></div>
 <table>
 <colgroup>
 <col width="11%" />
@@ -2020,10 +2020,10 @@ Battery.Capacity..mAh.</h2>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.3</span> <span class="ot">&lt;-</span> datos1<span class="fl">.2</span><span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(datos1)<span class="sc">==</span><span class="cn">FALSE</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos1<span class="fl">.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>datos1<span class="fl">.3</span> <span class="ot">&lt;-</span> datos1<span class="fl">.2</span><span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(datos1)<span class="sc">==</span><span class="cn">FALSE</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">dim</span>(datos1<span class="fl">.3</span>)</span></code></pre></div>
 <pre><code>## [1] 381   8</code></pre>
 </div>
 <div id="datos-obtenidos" class="section level1" number="7">
@@ -2031,7 +2031,7 @@ Battery.Capacity..mAh.</h2>
 <p>Finamente obtenemos un juego de datos de 381 filas y 8 columnas sin
 valores duplicados, con 3 variables tipo caracter, 4 integer y 1
 numérica.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">str</span>(datos1<span class="fl">.3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">str</span>(datos1<span class="fl">.3</span>))</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    381 obs. of  8 variables:
 ##  $ Brand      : chr  &quot;Apple&quot; &quot;Samsung&quot; &quot;OnePlus&quot; &quot;Xiaomi&quot; ...
 ##  $ Model      : chr  &quot;iPhone 13 Pro&quot; &quot;Galaxy S21 Ultra&quot; &quot;9 Pro&quot; &quot;Redmi Note 10 Pro&quot; ...
@@ -2045,10 +2045,10 @@ numérica.</p>
 <div id="creación-del-fichero-limpio" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Creación del fichero
 limpio</h1>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>datos1<span class="fl">.4</span> <span class="ot">&lt;-</span> datos1<span class="fl">.3</span> <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Brand,Model,Camera,Storage, RAM, Screen.Size, Battery, Price)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.table</span>(datos1<span class="fl">.4</span>, <span class="at">file =</span> <span class="st">&quot;Mobile_phone_pricev2.csv&quot;</span>,<span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>datos1<span class="fl">.4</span> <span class="ot">&lt;-</span> datos1<span class="fl">.3</span> <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">select</span>(Brand,Model,Camera,Storage, RAM, Screen.Size, Battery, Price)</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  <span class="fu">write.table</span>(datos1<span class="fl">.4</span>, <span class="at">file =</span> <span class="st">&quot;Mobile_phone_pricev2.csv&quot;</span>,<span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 </div>
 
 
